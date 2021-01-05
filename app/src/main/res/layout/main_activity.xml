@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <data>
+        <import android:type="android.view.View"/>
+
+        <variable
+            android:name="viewModel"
+            android:type="com.example.mvvm_test.MainViewModel" />
+    </data>
+    <TextView
+        android:id="@+id/repository_name"
+        android:text="@{viewModel.text}"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent" />
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+    />
+
+    <Button
+        android:id="@+id/refresh_button"
+        android:onClick="@{() -> viewModel.refresh()}"
+        android:clickable="@{viewModel.isLoading ? false : true}"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        />
+
+
+</LinearLayout>
